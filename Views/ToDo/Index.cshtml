@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TodoApp.Models.TodoItem>
+
+<h1>Todo List</h1>
+
+<a href="/Todo/Form">Créer une nouvelle tâche</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@(item.IsCompleted ? "Terminée" : "En cours")</td>
+                <td>
+                    <a href="/Todo/Form/@item.Id">Modifier</a>
+                    <a href="/Todo/Delete/@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
